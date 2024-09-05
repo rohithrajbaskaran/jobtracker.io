@@ -34,7 +34,7 @@ const AddToData = () => {
         };
         setData([...Data, newFormData]);
         try {
-            await axios.post('http://localhost:3001/jobs', newFormData);
+            await axios.post('https://jobtracker-io.onrender.com/jobs', newFormData);
           } catch (error) {
             console.error('Error sending data:', error);
         }
