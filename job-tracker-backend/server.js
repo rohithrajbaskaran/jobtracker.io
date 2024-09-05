@@ -46,6 +46,17 @@ app.get('/', async (req, res) => {
   }
 });
 
+app.post('/drop-table', async (req, res) => {
+  const dropTableQuery = 'DROP TABLE IF EXISTS "job-tracker";';
+  try {
+    await db.query(dropTableQuery);
+    res.status(200).send('Table "job-tracker" dropped.');
+  } catch (error) {
+    console.error('Error dropping table:', error);
+    res.status(500).json({ error: 'Error dropping table' });
+  }
+});
+
 app.get('/schema', async (req, res) => {
   try {
     const result = await db.query(`
