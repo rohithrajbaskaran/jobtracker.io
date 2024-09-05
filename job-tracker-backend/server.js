@@ -19,7 +19,7 @@ db.connect()
     
     const createTableQuery = `
       CREATE TABLE IF NOT EXISTS "job-tracker" (
-        id PRIMARY KEY,
+        id UUID NOT NULL PRIMARY KEY,
         company VARCHAR(100) NOT NULL,
         status VARCHAR(50) NOT NULL,
         date DATE,
