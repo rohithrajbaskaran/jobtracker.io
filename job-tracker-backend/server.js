@@ -46,6 +46,21 @@ app.get('/', async (req, res) => {
   }
 });
 
+app.get('/schema', async (req, res) => {
+  try {
+    const result = await db.query(`
+      SELECT column_name, data_type
+      FROM information_schema.columns
+      WHERE table_name = 'job-tracker'
+    `);
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error fetching schema:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
 app.post('/jobs', async (req, res) => {
     const { id, company, status, date, link } = req.body;
     const dateValue = date || null;
