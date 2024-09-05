@@ -14,8 +14,24 @@ const db = new Client({
 });
 
 db.connect()
-  .then(() => console.log('Connected to PostgreSQL'))
-  .catch(err => console.error('Database connection error', err.stack));
+  .then(() => {
+    console.log('Connected to PostgreSQL');
+    
+    const createTableQuery = `
+      CREATE TABLE IF NOT EXISTS "job-tracker" (
+        id SERIAL PRIMARY KEY,
+        company VARCHAR(100) NOT NULL,
+        status VARCHAR(50) NOT NULL,
+        date DATE,
+        link VARCHAR(255)
+      );
+    `;
+    
+    return db.query(createTableQuery);
+  })
+  .then(() => console.log('Table "job-tracker" is ready'))
+  .catch(err => console.error('Database connection error or table creation failed', err.stack));
+
 
 app.use(cors()); 
 app.use(express.json()); 
