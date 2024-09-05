@@ -12,7 +12,7 @@ export const DataContextProvider = ({children}) => {
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/');
+                const response = await axios.get('https://jobtracker-io.onrender.com/');
                 setData(response.data);
             } catch (error) {
                 setError('Error loading jobs: ' + error.message);
