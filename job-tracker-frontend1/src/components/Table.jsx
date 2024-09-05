@@ -39,7 +39,7 @@ const Table = ({searchQuery, pagesDisplayed}) => {
         e.preventDefault();
         setShowAlert({show: true, item: editFormData.company});
         try {
-            const response = await axios.put(`http://localhost:3001/jobs/${editFormData.id}`, editFormData);
+            const response = await axios.put(`https://jobtracker-io.onrender.com/jobs/${editFormData.id}`, editFormData);
             const updatedItem = response.data; 
             const updatedData = Data.map(item => item.id === updatedItem.id ? updatedItem : item);
             setData(updatedData); 
@@ -52,7 +52,7 @@ const Table = ({searchQuery, pagesDisplayed}) => {
     //Axios to remove/DELETE data from database
     const handleRemove = async (id) => {
         try {
-            await axios.delete(`http://localhost:3001/jobs/${id}`);
+            await axios.delete(`https://jobtracker-io.onrender.com/jobs/${id}`);
             const updatedItems = Data.filter(item => item.id !== id);
             setData(updatedItems);
         } catch (error) {
