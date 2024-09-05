@@ -1,0 +1,13 @@
+.logo{
+    height: 20px;
+    width: 150px;
+}
+
+.align-middle {
+    vertical-align: middle;
+  }
+
+
+thead tr th:hover {
+    cursor: pointer;
+}
