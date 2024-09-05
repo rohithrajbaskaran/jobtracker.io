@@ -56,7 +56,7 @@ app.post('/jobs', async (req, res) => {
         );
         res.status(201).json(result.rows[0]);
     } catch (error) {
-        console.error('Error adding job:', error);
+        console.error('Error adding job:', error.message, error.stack);
         res.status(500).json({ error: 'Server error' });
     }
 });
