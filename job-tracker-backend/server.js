@@ -7,11 +7,10 @@ const app = express();
 const port = 3001;
 
 const db = new Client({
-  user: "postgres",
-  host: "localhost",
-  database: "world",
-  password: "Kavitha123@",
-  port: 5432,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, 
+  },
 });
 
 db.connect()
